@@ -136,12 +136,12 @@ wss.on("connection", function connection(ws, request) {
         break;
       }
 
-      case "chat": {
+      case "messages": {
         users.forEach(user => {
             try {
                 if (user.rooms.includes(roomId)) {
                     const messagePayload = {
-                        type: "chat",
+                        type: "messages",
                         status: user.ws === ws ? "sent" : "received",
                         username: user.ws === ws ? "me" : parsedData.username,
                         message: parsedData.message,
@@ -156,7 +156,7 @@ wss.on("connection", function connection(ws, request) {
         break;
     }
 
-      case "shape": {
+      case "chat": {
         const { message } = parsedData;
         console.log("room id", roomId, "message", message, "user id", userId);
 
@@ -180,7 +180,7 @@ wss.on("connection", function connection(ws, request) {
         users.forEach(user => {
           if (user.rooms.includes(roomId)) {
             user.ws.send(JSON.stringify({
-              type: "shape",
+              type: "chat",
               message: message,
               roomId
             }));
