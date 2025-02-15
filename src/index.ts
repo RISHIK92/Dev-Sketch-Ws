@@ -141,7 +141,7 @@ wss.on("connection", function connection(ws, request) {
             try {
                 if (user.rooms.includes(roomId)) {
                     const messagePayload = {
-                        type: "messages",
+                        type: "chat",
                         status: user.ws === ws ? "sent" : "received",
                         username: user.ws === ws ? "me" : parsedData.username,
                         message: parsedData.message,
@@ -180,7 +180,7 @@ wss.on("connection", function connection(ws, request) {
         users.forEach(user => {
           if (user.rooms.includes(roomId)) {
             user.ws.send(JSON.stringify({
-              type: "chat",
+              type: "shape",
               message: message,
               roomId
             }));
