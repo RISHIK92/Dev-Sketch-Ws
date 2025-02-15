@@ -136,6 +136,26 @@ wss.on("connection", function connection(ws, request) {
         break;
       }
 
+      case "messages": {
+        users.forEach(user => {
+            try {
+                if (user.rooms.includes(roomId)) {
+                    const messagePayload = {
+                        type: "messages",
+                        status: user.ws === ws ? "sent" : "received",
+                        username: user.ws === ws ? "me" : parsedData.username,
+                        message: parsedData.message,
+                        roomId
+                    };
+                    user.ws.send(JSON.stringify(messagePayload));
+                }
+            } catch (error) {
+                console.error("Error sending message to user:", user, error);
+            }
+        });
+        break;
+    }
+
       case "chat": {
         const { message } = parsedData;
         console.log("room id", roomId, "message", message, "user id", userId);
