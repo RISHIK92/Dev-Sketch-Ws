@@ -136,7 +136,7 @@ wss.on("connection", function connection(ws, request) {
         break;
       }
 
-      case "messages": {
+      case "chat": {
         users.forEach(user => {
             try {
                 if (user.rooms.includes(roomId)) {
@@ -156,7 +156,7 @@ wss.on("connection", function connection(ws, request) {
         break;
     }
 
-      case "chat": {
+      case "shape": {
         const { message } = parsedData;
         console.log("room id", roomId, "message", message, "user id", userId);
 
