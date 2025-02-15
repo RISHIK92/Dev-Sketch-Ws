@@ -129,7 +129,7 @@ wss.on("connection", function connection(ws, request) {
                                     type: "messages",
                                     status: user.ws === ws ? "sent" : "received",
                                     username: user.ws === ws ? "me" : parsedData.username,
-                                    message: parsedData.message,
+                                    msg: parsedData.msg,
                                     roomId
                                 };
                                 user.ws.send(JSON.stringify(messagePayload));
