@@ -1,7 +1,7 @@
 import { WebSocket, WebSocketServer } from 'ws';
 import jwt, { JwtPayload } from "jsonwebtoken";
 // import { JWT_SECRET } from '@repo/backend-common/config';
-import { PrismaClient } from "@prisma/client";
+import { PrismaClient } from '@prisma/client';
 
 const prismaClient = new PrismaClient(); // Note the .js extension  // Adjust if necessary based on the folder structure
 
