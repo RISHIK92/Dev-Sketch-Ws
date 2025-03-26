@@ -15,8 +15,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const ws_1 = require("ws");
 const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 // import { JWT_SECRET } from '@repo/backend-common/config';
-const client_1 = require("@prisma/client");
-const prismaClient = new client_1.PrismaClient(); // Note the .js extension  // Adjust if necessary based on the folder structure
+const index_js_1 = require("@prisma/client/index.js");
+const prismaClient = new index_js_1.PrismaClient(); // Note the .js extension  // Adjust if necessary based on the folder structure
 const dotenv_1 = __importDefault(require("dotenv"));
 dotenv_1.default.config({ path: './config.env' });
 const JWT_SECRET = process.env.JWT_SECRET || "123123";
